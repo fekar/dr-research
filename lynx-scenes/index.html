@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="LynxScenes is a large-scale real-world benchmark for outdoor wheel-legged robot perception, navigation, imagination, and reconstruction." />
+    <meta name="theme-color" content="#07110f" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%2307110f'/%3E%3Cpath d='M14 43V19h8v17h28v7z' fill='%23c9ff62'/%3E%3Ccircle cx='43' cy='24' r='8' fill='none' stroke='%235ce1d2' stroke-width='5'/%3E%3C/svg%3E" />
+    <title>LynxScenes — Real-world wheel-legged robot benchmark</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="LynxScenes home">
+        <span class="brand-mark" aria-hidden="true">LS</span>
+        <span><strong>LynxScenes</strong><small>Outdoor Robot Benchmark</small></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#benchmark">Benchmark</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#results">Results</a>
+        <a href="#citation">Citation</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">Menu</button>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <div class="eyebrow">ICLR 2027 · UNDER REVIEW</div>
+            <h1>LynxScenes</h1>
+            <p class="hero-lede">A Large-Scale Real-World Benchmark for Outdoor Wheel-Legged Robot Perception, Navigation, Imagination and Reconstruction</p>
+            <p class="hero-authors">
+              Jun Tian<sup>1,2</sup>, HAO WU<sup>3</sup>, Ruo Chen<sup>4</sup>, Yiyi Liao<sup>4</sup>,
+              Hongyi Lin<sup>5,6</sup>, Jincheng Yu, Chao Li<sup>1,*</sup>, Yingjie NIU<sup>1,*,&dagger;</sup>
+            </p>
+            <div class="hero-affiliations" aria-label="Author affiliations">
+              <span><sup>1</sup> Deep Robotics (deeprobotics.cn)</span>
+              <span><sup>2</sup> University of Illinois at Urbana-Champaign (uiuc.edu)</span>
+              <span><sup>3</sup> The Hong Kong University of Science and Technology (ust.hk)</span>
+              <span><sup>4</sup> Zhejiang University (zju.edu.cn)</span>
+              <span><sup>5</sup> Tsinghua University (tsinghua.edu.cn)</span>
+              <span><sup>6</sup> Massachusetts Institute of Technology (mit.edu)</span>
+              <span class="corresponding"><sup>*</sup> Co-corresponding authors &nbsp;&middot;&nbsp; <sup>&dagger;</sup> Project leader</span>
+            </div>
+            <div class="resource-row" aria-label="Project resources">
+              <button class="resource primary" data-coming="Paper link will be added after release.">Paper <span>PDF</span></button>
+              <button class="resource" data-coming="Code will be released upon acceptance.">Code <span>SOON</span></button>
+              <button class="resource" data-coming="Dataset access will be released upon acceptance.">Dataset <span>SOON</span></button>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal delay-1">
+            <img src="./assets/overview-render.jpg" alt="LYNX M20 navigating through a real-world campus environment" />
+            <p class="figure-caption"><strong>Figure 1.</strong> LynxScenes unifies real-world multimodal data, dense annotations, and four outdoor robot autonomy tasks.</p>
+          </div>
+        </div>
+
+        <div class="metric-rail reveal delay-2" aria-label="Dataset scale">
+          <div><strong data-count="100">100K</strong><span>30-second clips</span></div>
+          <div><strong data-count="3.0">3.0M</strong><span>annotated frames</span></div>
+          <div><strong data-count="833.6">833.6h</strong><span>outdoor navigation</span></div>
+          <div><strong data-count="3294.7">3,294.7km</strong><span>traveled distance</span></div>
+        </div>
+      </section>
+
+      <section class="statement section-shell">
+        <p class="section-index">ABSTRACT</p>
+        <div class="statement-grid">
+          <h2>A common real-world foundation for outdoor robot autonomy.</h2>
+          <div>
+            <p>Wheel-legged robots operating in outdoor spaces shared with humans require accurate perception, socially compliant navigation, future-scene reasoning, and scene reconstruction. Existing datasets typically support these capabilities in isolation.</p>
+            <p class="muted">LynxScenes brings them together through large-scale synchronized multimodal recordings, dense spatial and behavioral annotations, continuous future trajectories, and a unified evaluation toolkit.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="field-note section-shell" id="dataset">
+        <div class="media-frame figure-two reveal">
+          <div class="media-image">
+            <img src="./assets/robot-face-blurred-render.jpg" alt="LYNX M20 platform, navigation behaviors, fisheye camera views, LiDAR, and bird's-eye-view annotations with faces blurred" loading="lazy" />
+            
+          </div>
+          <p class="figure-caption"><strong>Figure 2.</strong> The LYNX M20 platform and multimodal sensing setup, including four fisheye cameras, dual LiDARs, robot motion states, and dense bird's-eye-view annotations for outdoor navigation.</p>
+        </div>
+        <div class="field-copy reveal delay-1">
+          <p class="section-index">DATASET</p>
+          <h2>Real-world data from a physical LYNX M20.</h2>
+          <p>Every clip synchronizes surround-view vision, geometry, motion, and intent. Trained operators follow a predefined social-compliance protocol, with unsafe or inconsistent demonstrations removed during review.</p>
+          <dl class="sensor-list">
+            <div><dt>04</dt><dd>Fisheye cameras<br /><span>1920 × 1536 · 10 Hz</span></dd></div>
+            <div><dt>02</dt><dd>96-channel LiDARs<br /><span>360° × 90° · 60 m</span></dd></div>
+            <div><dt>06</dt><dd>Motion dimensions<br /><span>IMU + LIO + robot state</span></dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="scene-showcase">
+        <div class="section-shell">
+          <div class="section-heading scene-heading">
+            <div>
+              <p class="section-index">ENVIRONMENT COVERAGE</p>
+              <h2>One platform, changing complexity.</h2>
+            </div>
+            <p>Illustrative views of the close-range, socially shared, and uneven environments targeted by the benchmark.</p>
+          </div>
+          <div class="scene-picker" role="tablist" aria-label="Complex outdoor environments">
+            <button id="scene-tab-sand" role="tab" aria-selected="false" aria-controls="scene-panel" data-scene="sand">Sand dynamics</button>
+            <button id="scene-tab-steps" role="tab" aria-selected="false" aria-controls="scene-panel" data-scene="steps">Stone steps</button>
+            <button id="scene-tab-water" role="tab" aria-selected="false" aria-controls="scene-panel" data-scene="water">Water recovery</button>
+            <button id="scene-tab-field" role="tab" aria-selected="false" aria-controls="scene-panel" data-scene="field">Real-world demo</button>
+            <button id="scene-tab-campus" role="tab" aria-selected="true" aria-controls="scene-panel" data-scene="campus">Campus flow</button>
+            <button id="scene-tab-crossing" role="tab" aria-selected="false" aria-controls="scene-panel" data-scene="crossing">Mixed traffic</button>
+            <button id="scene-tab-terrain" role="tab" aria-selected="false" aria-controls="scene-panel" data-scene="terrain">Rough terrain</button>
+          </div>
+          <figure class="scene-panel" id="scene-panel" role="tabpanel" aria-labelledby="scene-tab-campus">
+            <div class="scene-media">
+              <img id="scene-image" src="./assets/scene-campus-triptych.webp" alt="Three real-world views of the LYNX M20 navigating campus sidewalks and shared paths" loading="lazy" />
+              <video id="scene-video" src="./assets/real-world-demo-6episodes.mp4" poster="./assets/real-world-demo-6episodes-poster.jpg" muted loop playsinline controls preload="metadata" hidden aria-label="A montage of six real-world front-fisheye robot navigation episodes"></video>
+            </div>
+            <figcaption>
+              <span><strong id="scene-title">Campus flow</strong><small id="scene-description">Three campus-scale navigation views across sidewalks, shared paths, and parked mobility.</small></span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="benchmark" id="benchmark">
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="section-index">BENCHMARK TASKS</p>
+              <h2>Four tasks. One world.</h2>
+            </div>
+            <p>Explore the common evaluation surface spanning action, space, time, and viewpoint.</p>
+          </div>
+
+          <div class="task-switcher" role="tablist" aria-label="Benchmark tasks">
+            <button id="tab-trajectory" role="tab" aria-selected="true" aria-controls="task-panel" data-task="trajectory"><span>01</span> Trajectory</button>
+            <button id="tab-bev" role="tab" aria-selected="false" aria-controls="task-panel" data-task="bev"><span>02</span> BEV perception</button>
+            <button id="tab-future" role="tab" aria-selected="false" aria-controls="task-panel" data-task="future"><span>03</span> Future scene</button>
+            <button id="tab-reconstruction" role="tab" aria-selected="false" aria-controls="task-panel" data-task="reconstruction"><span>04</span> Reconstruction</button>
+          </div>
+
+          <article class="task-panel" id="task-panel" role="tabpanel" aria-labelledby="tab-trajectory">
+            <div class="task-copy">
+              <span class="task-tag" id="task-tag">ACTION / 1 SECOND</span>
+              <h3 id="task-title">Instruction-conditioned trajectory prediction</h3>
+              <p id="task-description">Predict a complete 10 × 3 future trajectory from sixteen historical images, current robot motion, and a three-layer semantic instruction.</p>
+              <div class="task-specs" id="task-specs">
+                <div><span>INPUT</span><strong>4 views × 4 timestamps</strong></div>
+                <div><span>OUTPUT</span><strong>10 planar poses</strong></div>
+                <div><span>LEAD METRIC</span><strong>QNS ↑</strong></div>
+              </div>
+            </div>
+            <div class="task-score">
+              <span>TOP REPORTED BASELINE</span>
+              <strong id="task-score">0.843</strong>
+              <p id="task-score-label">NaVILA · QNS</p>
+              <div class="score-line"><i id="score-fill" style="width:84.3%"></i></div>
+              <small id="task-insight">The lowest imitation error is not always the safest or most instruction-compliant policy.</small>
+            </div>
+          </article>
+
+          <figure class="task-visual reveal is-wide-visual">
+            <div class="task-image-stage is-wide">
+              <object id="task-pdf" class="task-pdf" type="application/pdf" aria-label="Qualitative instruction-conditioned trajectory predictions for straight, left-turn, and right-turn commands" hidden>
+                <a id="task-pdf-fallback" href="./assets/task1.pdf" target="_blank" rel="noopener">Open the complete Instruction-conditioned trajectory prediction visual</a>
+              </object>
+              <img id="task-image" src="./assets/task1-render.jpg" alt="Qualitative instruction-conditioned trajectory predictions for straight, left-turn, and right-turn commands" loading="lazy" />
+              <video id="task-video" class="task-video" muted loop playsinline controls preload="metadata" hidden aria-label="Generated future-scene rollout montage"></video>
+            </div>
+            <figcaption id="task-caption"><strong>Trajectory prediction.</strong> Predicted and ground-truth paths under three navigation instructions.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="data-story section-shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">DATASET STATISTICS</p>
+            <h2>Dense where robot safety lives.</h2>
+          </div>
+          <p>Most annotated objects sit within twenty meters—the range where close interaction matters most.</p>
+        </div>
+
+        <div class="data-grid">
+          <article class="data-card objects reveal">
+            <div class="card-kicker">3D OBJECTS</div>
+            <strong>20.82M</strong>
+            <p>oriented boxes across 27 categories</p>
+            <div class="bar-stack" aria-label="Object category composition">
+              <i style="--w:35.98%;--c:#c9ff62"></i><i style="--w:14.12%;--c:#5ce1d2"></i><i style="--w:13.46%;--c:#ff8a47"></i><i style="--w:36.44%;--c:#68726f"></i>
+            </div>
+            <small>Pedestrian 35.98% · Scooter 14.12% · Car 13.46% · Other 36.44%</small>
+            <details class="taxonomy-dropdown">
+              <summary>View all 27 object categories</summary>
+              <div class="taxonomy-groups">
+                <div><b>Human · 2</b><p><span>Pedestrian</span><span>Pedestrian Accessories</span></p></div>
+                <div><b>Mobility · 8</b><p><span>Bicycle</span><span>Bicycle Rider</span><span>Scooter</span><span>Scooter Rider</span><span>Motorcycle</span><span>Motorcycle Rider</span><span>Tricycle</span><span>Tricycle Rider</span></p></div>
+                <div><b>Vehicle · 5</b><p><span>Car</span><span>SUV</span><span>Van</span><span>Truck</span><span>Bus</span></p></div>
+                <div><b>Traffic Facility · 5</b><p><span>Cone</span><span>Traffic Barrier</span><span>Road Barrel</span><span>Reflective Triangle</span><span>Fire Hydrant</span></p></div>
+                <div><b>Other · 7</b><p><span>Robot Dog</span><span>Platform Cart</span><span>Construction Cart</span><span>Excavator</span><span>Forklift</span><span>Dog</span><span>Cat</span></p></div>
+              </div>
+            </details>
+          </article>
+
+          <article class="data-card range reveal delay-1">
+            <div class="card-kicker">SPATIAL COMPLEXITY</div>
+            <div class="range-gauge"><span>0m</span><i></i><b>76.52%</b><span>20m</span></div>
+            <h3>Three in four objects are close-range.</h3>
+            <p>Mean object distance: 13.93 m · 6.94 objects per frame</p>
+          </article>
+
+          <article class="data-card intent reveal">
+            <div class="card-kicker">BEHAVIOR INTENT</div>
+            <strong>20</strong>
+            <p>navigation instructions in three independent layers</p>
+            <div class="intent-distribution">
+              <details>
+                <summary><span>Primary navigation <small>6 instructions</small></span><b>100%</b></summary>
+                <p class="taxonomy-tags"><span>follow path</span><span>continue straight at junction</span><span>take left branch</span><span>take right branch</span><span>u turn</span><span>unknown navigation</span></p>
+              </details>
+              <details>
+                <summary><span>Special motion <small>9 instructions</small></span><b>35.91%</b></summary>
+                <p class="taxonomy-tags"><span>stationary</span><span>reversing</span><span>rotate in place left</span><span>rotate in place right</span><span>lane left</span><span>lane right</span><span>lateral left</span><span>lateral right</span><span>mixed motion</span></p>
+              </details>
+              <details>
+                <summary><span>Obstacle interaction <small>5 instructions</small></span><b>22.42%</b></summary>
+                <p class="taxonomy-tags"><span>obstacle wait</span><span>obstacle avoid left</span><span>obstacle avoid right</span><span>obstacle reroute</span><span>unknown obstacle interaction</span></p>
+              </details>
+            </div>
+          </article>
+
+          <article class="data-card roads reveal delay-1">
+            <div class="card-kicker">ROAD STRUCTURE</div>
+            <strong>13.89M</strong>
+            <p>curbs, dividing lines, and crosswalk annotations</p>
+            <div class="road-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+            <small>4.63 annotations per frame on average</small>
+          </article>
+        </div>
+
+        <details class="full-statistics">
+          <summary>View the full dataset statistics figure</summary>
+          <img src="./assets/dataset-render.jpg" alt="Full LynxScenes dataset statistics covering annotations, instructions, scenes, conditions, spatial complexity, and ego motion" loading="lazy" />
+        </details>
+      </section>
+
+      <section class="qns-section">
+        <div class="section-shell qns-grid">
+          <div>
+            <p class="section-index">EVALUATION</p>
+            <h2>Similarity is not enough.</h2>
+            <p>QNS adds a log-replay-based pseudo-closed-loop view of navigation. A stationary robot may avoid collisions, but it still fails to make progress or follow instructions.</p>
+          </div>
+          <div class="qns-board" aria-label="Quadruped Navigation Score components">
+            <div class="qns-title"><span>QUADRUPED NAVIGATION SCORE</span><strong>QNS</strong></div>
+            <div class="qns-gates">
+              <div class="gate"><b>NC</b><span>No collision</span></div>
+              <div class="operator">×</div>
+              <div class="gate"><b>WAC</b><span>Walkable area</span></div>
+              <div class="operator">×</div>
+              <div class="weighted">
+                <span>EP</span><span>TTC</span><span>CL</span><span>IC</span>
+                <small>weighted navigation quality</small>
+              </div>
+            </div>
+            <div class="qns-foot"><span>SAFETY GATES</span><span>PROGRESS + MARGIN + INTENT</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="results section-shell" id="results">
+        <div class="section-heading">
+          <div>
+              <p class="section-index">BASELINE RESULTS</p>
+            <h2>No single model owns the field.</h2>
+          </div>
+          <p>Results reveal different leaders for navigation quality, perception, visual generation, and reconstruction.</p>
+        </div>
+
+        <div class="result-grid">
+          <article>
+            <span>TRAJECTORY · QNS ↑</span>
+            <h3>NaVILA</h3>
+            <strong>0.843</strong>
+            <p>Best pseudo-closed-loop score among learned policies.</p>
+          </article>
+          <article>
+            <span>BEV · HDS ↑</span>
+            <h3>BEVFusion</h3>
+            <strong>64.48</strong>
+            <p>Highest object detection score with camera + LiDAR input.</p>
+          </article>
+          <article>
+            <span>FUTURE SCENE · FVD ↓</span>
+            <h3>WorldStereo</h3>
+            <strong>386.2</strong>
+            <p>Best distributional realism; other models lead visual quality metrics.</p>
+          </article>
+          <article>
+            <span>RECONSTRUCTION · PSNR ↑</span>
+            <h3>ReCoSplat</h3>
+            <strong>15.94</strong>
+            <p>Best PSNR, LPIPS, and multi-scale structural similarity.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="citation" id="citation">
+        <div class="section-shell citation-grid">
+          <div>
+            <p class="section-index">CITATION</p>
+            <h2>Build on the benchmark.</h2>
+            <p>The dataset and evaluation toolkit are planned for public release upon acceptance.</p>
+          </div>
+          <div class="code-card">
+            <button id="copy-citation" type="button">Copy BibTeX</button>
+            <pre id="bibtex">@inproceedings{lynxscenes2027,
+  title={LynxScenes: A Large-Scale Real-World Benchmark for
+    Outdoor Wheel-Legged Robot Perception, Navigation,
+    Imagination and Reconstruction},
+  author={Tian, Jun and Wu, Hao and Chen, Ruo and Liao, Yiyi and
+    Lin, Hongyi and Yu, Jincheng and Li, Chao and Niu, Yingjie},
+  booktitle={International Conference on Learning Representations},
+  year={2027}
+}</pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="brand footer-brand"><span class="brand-mark">LS</span><span><strong>LynxScenes</strong><small>REAL WORLD. SHARED EVALUATION.</small></span></div>
+      <p>LynxScenes · ICLR 2027</p>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>

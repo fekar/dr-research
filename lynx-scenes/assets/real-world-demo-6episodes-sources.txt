@@ -1,0 +1,11 @@
+Random seed: 20261009
+Source date folder: /mnt/nas_brain/shared/data/lerobot_data/origin_data/0724
+Extraction window: 12.5s-17.5s from each 30-second episode
+Transition: 0.5-second crossfade between adjacent clips
+
+1. d-f6d28c3384954d64b57d5e5622f3efeb / episode_000076.mp4
+2. d-ba09d976d1914b088709d78a0b824966 / episode_000091.mp4
+3. d-a0b82de2e94747c6bf958a0512dfb194 / episode_000076.mp4
+4. d-22681a96fc404afe9e391d0a68387c31 / episode_000020.mp4
+5. d-ba09d976d1914b088709d78a0b824966 / episode_000094.mp4
+6. d-0b46f266a5f14080aa122287ddf6a517 / episode_000058.mp4

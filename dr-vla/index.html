@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DEEP Robotics presents DR-VLA: learning transferable scene understanding and future prediction from human videos for quadruped navigation.">
+  <meta name="theme-color" content="#ffffff">
+  <title>DR-VLA · DEEP Robotics</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232c53a0'/%3E%3Cpath d='M17 48V16h10c17 0 17 32 0 32z' fill='none' stroke='white' stroke-width='6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="publisher-brand" href="#top" aria-label="DEEP Robotics Research · DR-VLA"><img src="assets/deep-robotics.svg" alt="DEEP Robotics" width="190" height="27"><span class="publisher-tag">Research</span></a>
+      <div class="nav-links"><a href="#videos">Videos</a><a href="#overview">Overview</a><a href="#method">Method</a><a href="#egolynx">EgoLynx</a><a href="#results">Results</a><a href="#citation">Citation</a></div>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero container" id="top" aria-labelledby="paper-title">
+      <p class="eyebrow publisher-intro">DEEP Robotics presents</p>
+      <h1 id="paper-title"><span class="project-name">DR-VLA</span><span class="paper-title">Learning Human-Like Quadruped Navigation<br class="desktop-break"> from Egocentric Web Videos via<br class="desktop-break"> Domain-Invariant Scene Representations</span></h1>
+      <div class="authors" aria-label="Authors in paper order">
+        <span>Jun Tian<sup>1,2</sup></span><span>Ruo Chen<sup>3</sup></span><span>Hongyi Lin<sup>4,5</sup></span><span>Yingjie Niu<sup>1,*,†</sup></span><span>Chao Li<sup>1,*</sup></span>
+      </div>
+      <div class="affiliations"><span><sup>1</sup>Deep Robotics</span><span><sup>2</sup>University of Illinois at Urbana-Champaign</span><span><sup>3</sup>Zhejiang University</span><span><sup>4</sup>Tsinghua University</span><span><sup>5</sup>Massachusetts Institute of Technology</span></div>
+      <p class="author-note"><sup>*</sup> Corresponding authors &nbsp;·&nbsp; <sup>†</sup> Project Leader</p>
+      <div class="institution-logos" aria-label="Author affiliations">
+        <img class="logo-deep" src="assets/deep-robotics.svg" alt="Deep Robotics" width="180" height="26">
+        <img class="logo-illinois" src="assets/illinois.png" alt="University of Illinois at Urbana-Champaign" width="190" height="50">
+        <img class="logo-seal" src="assets/zhejiang.svg" alt="Zhejiang University" width="48" height="48">
+        <img class="logo-seal" src="assets/tsinghua.svg" alt="Tsinghua University" width="48" height="48">
+        <img class="logo-mit" src="assets/mit.svg" alt="Massachusetts Institute of Technology" width="205" height="48">
+      </div>
+      <div class="resource-links" aria-label="Project resources">
+        <a class="resource primary" href="assets/DR-VLA.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5"/></svg>Paper <span class="resource-detail">PDF</span></a>
+        <!-- Replace the disabled arXiv button with an anchor when the preprint URL is available. -->
+        <button class="resource" type="button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 4 12 16M18 4 6 20"/></svg>arXiv <span class="resource-detail">Forthcoming</span></button>
+        <!-- Code is not public. Do not add an invented repository URL. -->
+        <button class="resource" type="button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></svg>Code <span class="resource-detail">Coming soon</span></button>
+        <a class="resource" href="#videos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7z"/></svg>Videos</a>
+      </div>
+      <p class="hero-summary">Learning human navigation priors for wheeled-legged robots.<br><strong>Grounded in demonstrations from real-world deliveries.</strong></p>
+    </section>
+    <section class="video-showcase container" id="videos" aria-labelledby="videos-title">
+      <div class="video-heading">
+        <div><p class="eyebrow">Trajectory visualizations</p><h2 id="videos-title">Navigation in motion</h2><p class="video-intro">DR-VLA trajectory predictions over recorded robot observations.</p></div>
+        <button class="motion-toggle" type="button" hidden><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7z"/></svg><svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><span>Play videos</span></button>
+      </div>
+      <div class="video-grid">
+        <figure class="video-card">
+          <div class="video-stage">
+            <video id="navigation-video-01" class="navigation-video" width="640" height="480" src="assets/videos/navigation-01.mp4" poster="assets/videos/navigation-01-poster.jpg" controls muted loop playsinline preload="metadata" aria-labelledby="video-title-01" aria-describedby="video-description-01">
+              Your browser does not support embedded video. <a href="assets/videos/navigation-01.mp4">Download the video</a>.
+            </video>
+          </div>
+          <figcaption class="video-caption"><div class="video-caption-top"><span class="scene-label">Scene 01</span><span class="video-duration">20 seconds</span></div><h3 id="video-title-01">Along the sidewalk</h3><p id="video-description-01">Predicted paths through a tree-lined urban scene.</p></figcaption>
+          <p class="video-error" hidden>Unable to play this video. <a href="assets/videos/navigation-01.mp4">Open the MP4 file</a>.</p>
+        </figure>
+        <figure class="video-card">
+          <div class="video-stage">
+            <video id="navigation-video-02" class="navigation-video" width="450" height="360" src="assets/videos/navigation-02.mp4" poster="assets/videos/navigation-02-poster.jpg" controls muted loop playsinline preload="metadata" aria-labelledby="video-title-02" aria-describedby="video-description-02">
+              Your browser does not support embedded video. <a href="assets/videos/navigation-02.mp4">Download the video</a>.
+            </video>
+          </div>
+          <figcaption class="video-caption"><div class="video-caption-top"><span class="scene-label">Scene 02</span><span class="video-duration">30 seconds</span></div><h3 id="video-title-02">Beside parked vehicles</h3><p id="video-description-02">Trajectory predictions in a scene with vehicles and pedestrians.</p></figcaption>
+          <p class="video-error" hidden>Unable to play this video. <a href="assets/videos/navigation-02.mp4">Open the MP4 file</a>.</p>
+        </figure>
+      </div>
+      <p class="video-playback-note">Muted loops · Use the player controls to pause, seek, or view fullscreen.</p>
+    </section>
+    <section class="overview container" id="overview" aria-labelledby="overview-title">
+      <div class="section-top"><p class="eyebrow" id="overview-title">From web video to robot navigation</p><span class="figure-index">Overview · Figure 1</span></div>
+      <figure class="paper-figure">
+        <button class="figure-button" type="button" data-zoom="assets/pipeline.png" data-caption="DR-VLA overview: egocentric human videos and robot demonstrations train understanding, world, and action experts." aria-label="Enlarge DR-VLA overview figure"><img src="assets/pipeline.png" width="2400" height="1351" alt="Human egocentric videos and four-view robot observations train three experts to predict scene structure and robot trajectories."><span class="zoom-hint">View full figure <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></svg></span></button>
+        <figcaption>DR-VLA connects action-free human video pretraining with robot action learning through a shared representation of scene structure.</figcaption>
+      </figure>
+      <div class="headline-results" aria-label="Key results">
+        <div><strong>10,000<span> h</span></strong><p>Egocentric web videos</p></div>
+        <div><strong>2,000</strong><p>Robot training clips</p></div>
+        <div><strong>0.884</strong><p>Quadruped Navigation Score</p></div>
+        <div><strong>92.1</strong><p>NAVSIM v1 PDM score</p></div>
+      </div>
+    </section>
+    
+    <section class="research-section" id="abstract" aria-labelledby="abstract-title">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">The research</p><h2 id="abstract-title">Abstract</h2></div>
+        <div class="prose"><p>Quadruped robots navigating shared outdoor spaces must understand complex scenes, anticipate change, and act in socially compliant ways. Egocentric web videos contain abundant human navigation experience, yet transferring it to robots is difficult because humans and robots observe and move through the world differently.</p><p>We introduce <strong>DR-VLA</strong>, a Mixture-of-Transformers framework that transfers this experience through a <strong>domain-invariant scene representation (DISR)</strong>. An understanding expert reasons about the scene, a world expert predicts its future structure, and a flow-matching action expert generates robot trajectories. Using <strong>EgoLynx</strong>, we first learn from 10,000 hours of human videos without action labels, then adapt to 2,000 teleoperated robot training clips. On the held-out robot test split, DR-VLA improves the Quadruped Navigation Score by approximately 5% and reduces final heading error by 14.6%, each relative to the strongest competing result. A separately trained NAVSIM model reaches 92.1 PDMS without web-video pretraining.</p></div>
+      </div>
+    </section>
+    <section class="research-section section-tint" id="motivation" aria-labelledby="motivation-title">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">01 / Motivation</p><h2 id="motivation-title">Human navigation experience,<br>shared with robots.</h2><p>People already demonstrate how to move through crowds, navigate around obstacles, and respond to changing scenes—in everyday videos.</p></div>
+        <div class="two-column">
+          <div><h3>An abundant source of experience</h3><p>Robot demonstrations require teleoperation and safety oversight. Human egocentric videos provide a much broader range of streets, weather, and social interactions, offering a scalable way to learn navigation priors.</p></div>
+          <div><h3>Two gaps to bridge</h3><p>A human’s head-mounted camera differs from a robot’s low-mounted fisheye views. Human motion also lacks executable robot action labels. Transferring scene understanding and future prediction requires an interface that can span these differences.</p></div>
+        </div>
+        <div class="insight"><p>Scene structure provides a shared interface:<br>what is present, where it is, and how it relates to its surroundings.</p></div>
+      </div>
+    </section>
+    <section class="research-section" id="method" aria-labelledby="method-title">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">02 / Method</p><h2 id="method-title">Understand. Anticipate. Act.</h2><p>DR-VLA predicts the future in a domain invariant scene representation, then grounds that prediction in a robot trajectory.</p></div>
+        <div class="disr-cues" aria-label="Three components of domain-invariant scene representation">
+          <div class="cue"><span class="cue-label">Semantic structure</span><h3>What is in the scene?</h3><p>Segmentation provides a shared vocabulary of entities, including pedestrians and vehicles.</p></div>
+          <div class="cue"><span class="cue-label">Spatial structure</span><h3>Where is it?</h3><p>Relative depth captures geometry while reducing scale differences caused by camera height.</p></div>
+          <div class="cue"><span class="cue-label">Relational structure</span><h3>How does it relate?</h3><p>Causal spatiotemporal attention encodes relationships across entities, geometry, and time.</p></div>
+        </div>
+        <figure class="paper-figure">
+          <button class="figure-button" type="button" data-zoom="assets/architecture.png" data-caption="The DISR autoencoder and three-expert DR-VLA architecture. The experts exchange information through shared attention with a block-wise mask." aria-label="Enlarge DR-VLA architecture figure"><img src="assets/architecture.png" width="2400" height="1351" loading="lazy" alt="DISR pretraining uses semantic and depth cues. Understanding, world, and action experts share attention to predict captions, future scene latents, and robot trajectories."><span class="zoom-hint">View full figure <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></svg></span></button>
+          <figcaption>The scene encoder receives segmentation and depth rather than RGB. DISR serves as a training target for future-scene prediction, with the three experts communicating through shared attention.</figcaption>
+        </figure>
+        <div class="experts">
+          <div class="expert"><span class="expert-number">EXPERT 01</span><h3>Understanding</h3><p>A vision-language model interprets observations and the navigation instruction, learning scene reasoning through caption supervision.</p></div>
+          <div class="expert"><span class="expert-number">EXPERT 02</span><h3>World</h3><p>Predicts future DISR latents to learn how scene structure evolves, using human videos without robot action labels.</p></div>
+          <div class="expert"><span class="expert-number">EXPERT 03</span><h3>Action</h3><p>Uses understanding and world-expert features to generate executable trajectories through flow matching.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="research-section section-tint" id="egolynx" aria-labelledby="egolynx-title">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">03 / EgoLynx</p><h2 id="egolynx-title">Learn at scale.<br>Adapt to the robot.</h2><p>Complementary human and robot data support two stages of training under a shared annotation format.</p></div>
+        <div class="training">
+          <div class="training-stage"><span class="stage-label">Stage 1 · EgoLynx-Web</span><div class="data-count">10,000 <span>hours</span></div><h3>Human videos, without action labels</h3><p>Curated egocentric videos cover urban and rural environments, different times of day, and diverse weather. The understanding and world experts learn scene reasoning and future DISR prediction.</p></div>
+          <div class="training-stage"><span class="stage-label">Stage 2 · EgoLynx-Robot</span><div class="data-count">2,000 <span>training clips</span></div><h3>Grounding in real robot motion</h3><p>Approximately 17 hours of teleoperated wheeled-legged robot navigation from real-world delivery settings. All three experts are fine-tuned, with robot action supervision and continued scene understanding and prediction.</p></div>
+        </div>
+        <div class="training-outcomes" aria-label="Shared annotation format"><span>Navigation instructions</span><span>Scene captions</span><span>DISR targets</span><span>Robot actions · Stage 2</span></div>
+        <p class="evaluation-note">Robot evaluation uses a held-out test split from the same teleoperation collection, with no clips shared with the training split. Robot adaptation addresses the remaining viewpoint and embodiment differences.</p>
+      </div>
+    </section>
+    <section class="research-section" id="results" aria-labelledby="results-title">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">04 / Results</p><h2 id="results-title">Better navigation through<br>structured future prediction.</h2><p>Evaluated on the held-out EgoLynx-Robot test split and, with an independently trained model, NAVSIM v1.</p></div>
+        <div class="result-callouts">
+          <div class="result-callout"><strong>~5%</strong><p><b>Higher QNS</b><br>0.884 vs. NaVILA’s 0.843</p></div>
+          <div class="result-callout"><strong>14.6%</strong><p><b>Lower final heading error</b><br>0.041 vs. NaVILA’s 0.048</p></div>
+          <div class="result-callout"><strong>92.1</strong><p><b>NAVSIM v1 PDM score</b><br>Trained without web pretraining</p></div>
+        </div>
+        <div class="results-grid">
+          <div>
+            <div class="chart-heading"><h3 id="chart-title">Quadruped navigation</h3><div class="metric-options" role="group" aria-label="Choose the result metric"><button type="button" data-metric="qns" aria-pressed="true">QNS</button><button type="button" data-metric="ade" aria-pressed="false">ADE</button><button type="button" data-metric="fde" aria-pressed="false">FDE</button><button type="button" data-metric="fhe" aria-pressed="false">FHE</button></div></div>
+            <p class="chart-note" id="metric-description" aria-live="polite" style="margin:0 0 18px">Quadruped Navigation Score · higher is better</p>
+            <ol class="bar-chart" aria-labelledby="chart-title" aria-describedby="metric-description"><li class="bar-row ours" data-model="DR-VLA"><span class="bar-name">DR-VLA</span><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="--bar:88.4%"></div></div><span class="bar-value">0.884</span></li>
+<li class="bar-row" data-model="NaVILA"><span class="bar-name">NaVILA</span><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="--bar:84.3%"></div></div><span class="bar-value">0.843</span></li>
+<li class="bar-row" data-model="StreamVLN"><span class="bar-name">StreamVLN</span><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="--bar:83.3%"></div></div><span class="bar-value">0.833</span></li>
+<li class="bar-row" data-model="π₀.₅"><span class="bar-name">π₀.₅</span><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="--bar:81.9%"></div></div><span class="bar-value">0.819</span></li>
+<li class="bar-row" data-model="LingBot-VLA 2.0"><span class="bar-name">LingBot-VLA 2.0</span><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="--bar:80.9%"></div></div><span class="bar-value">0.809</span></li>
+<li class="bar-row" data-model="OpenVLA"><span class="bar-name">OpenVLA</span><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="--bar:80.2%"></div></div><span class="bar-value">0.802</span></li>
+<li class="bar-row" data-model="DepthVLA"><span class="bar-name">DepthVLA</span><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="--bar:78.9%"></div></div><span class="bar-value">0.789</span></li>
+<li class="bar-row" data-model="InternNav"><span class="bar-name">InternNav</span><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="--bar:76.4%"></div></div><span class="bar-value">0.764</span></li>
+<li class="bar-row" data-model="OmniNav"><span class="bar-name">OmniNav</span><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="--bar:74.3%"></div></div><span class="bar-value">0.743</span></li></ol>
+            <div class="chart-scale" aria-hidden="true"><span>0</span><span id="scale-mid">0.5</span><span id="scale-max">1.0</span></div>
+            <p class="chart-note">Values from Table 1. All methods are trained on EgoLynx-Robot; DR-VLA additionally uses EgoLynx-Web. QNS combines safety, instruction compliance, comfort, and progress through pseudo-closed-loop evaluation.</p>
+          </div>
+          <aside class="results-aside" aria-label="Ablation and driving results">
+            <h3>Human video pretraining matters.</h3><p>Pretraining improves QNS from <b>0.823</b> with robot data alone to <b>0.884</b> with EgoLynx-Web.</p>
+            <h3>The prediction target matters, too.</h3>
+            <table class="compact-table"><caption class="visually-hidden">Alternative world-expert targets, Table 2a</caption><thead><tr><th scope="col">Prediction target</th><th scope="col">QNS ↑</th></tr></thead><tbody><tr><td>No world expert</td><td>0.841</td></tr><tr><td>Cosmos latent</td><td>0.845</td></tr><tr><td>DINOv3</td><td>0.856</td></tr><tr><td>V-JEPA 2.1</td><td>0.861</td></tr><tr><td>Depth + DINO video</td><td>0.866</td></tr><tr><td>FLARE-style</td><td>0.853</td></tr><tr class="highlight"><td>DISR (ours)</td><td>0.884</td></tr></tbody></table>
+            <h3 style="margin-top:28px">Beyond quadruped navigation</h3><p>A model trained separately on NAVSIM v1 reaches 92.1 PDMS. Removing the world expert lowers the score to 89.5.</p><div class="score-comparison"><div><span>Without world expert</span><strong>89.5</strong></div><span class="connector">PDMS</span><div><span>With DISR target</span><strong>92.1</strong></div></div>
+          </aside>
+        </div>
+        <details class="details-table"><summary>Full quadruped results · Table 1</summary><div class="table-scroll" role="region" aria-label="Full navigation result table, horizontally scrollable" tabindex="0"><table class="full-results" id="full-results"><caption class="visually-hidden">All values transcribed from manuscript Table 1. Up means higher is better; down means lower is better.</caption><thead><tr><th scope="col">Model</th><th scope="col">ADE ↓</th><th scope="col">FDE ↓</th><th scope="col">AHE ↓</th><th scope="col">FHE ↓</th><th scope="col">NC ↑</th><th scope="col">WAC ↑</th><th scope="col">TTC ↑</th><th scope="col">CL ↑</th><th scope="col">EP ↑</th><th scope="col">IC ↑</th><th scope="col">QNS ↑</th></tr></thead><tbody><tr data-model="InternNav"><th scope="row">InternNav</th><td data-metric="ade">0.079</td><td data-metric="fde">0.098</td><td data-metric="ahe">0.038</td><td data-metric="fhe">0.062</td><td data-metric="nc">0.945</td><td data-metric="wac">0.955</td><td data-metric="ttc">0.871</td><td data-metric="cl">0.815</td><td data-metric="ep">0.893</td><td data-metric="ic">0.818</td><td data-metric="qns">0.764</td></tr>
+<tr data-model="NaVILA"><th scope="row">NaVILA</th><td data-metric="ade">0.030</td><td data-metric="fde">0.059</td><td data-metric="ahe">0.028</td><td data-metric="fhe">0.048</td><td data-metric="nc">0.968</td><td data-metric="wac">0.975</td><td data-metric="ttc">0.912</td><td data-metric="cl">0.838</td><td data-metric="ep">0.941</td><td data-metric="ic">0.893</td><td data-metric="qns">0.843</td></tr>
+<tr data-model="OmniNav"><th scope="row">OmniNav</th><td data-metric="ade">0.090</td><td data-metric="fde">0.152</td><td data-metric="ahe">0.033</td><td data-metric="fhe">0.054</td><td data-metric="nc">0.939</td><td data-metric="wac">0.949</td><td data-metric="ttc">0.863</td><td data-metric="cl">0.811</td><td data-metric="ep">0.866</td><td data-metric="ic">0.803</td><td data-metric="qns">0.743</td></tr>
+<tr data-model="StreamVLN"><th scope="row">StreamVLN</th><td data-metric="ade">0.036</td><td data-metric="fde">0.067</td><td data-metric="ahe">0.032</td><td data-metric="fhe">0.053</td><td data-metric="nc">0.964</td><td data-metric="wac">0.972</td><td data-metric="ttc">0.905</td><td data-metric="cl">0.843</td><td data-metric="ep">0.933</td><td data-metric="ic">0.884</td><td data-metric="qns">0.833</td></tr>
+<tr data-model="LingBot-VLA 2.0"><th scope="row">LingBot-VLA 2.0</th><td data-metric="ade">0.044</td><td data-metric="fde">0.068</td><td data-metric="ahe">0.038</td><td data-metric="fhe">0.054</td><td data-metric="nc">0.958</td><td data-metric="wac">0.966</td><td data-metric="ttc">0.893</td><td data-metric="cl">0.829</td><td data-metric="ep">0.926</td><td data-metric="ic">0.863</td><td data-metric="qns">0.809</td></tr>
+<tr data-model="DepthVLA"><th scope="row">DepthVLA</th><td data-metric="ade">0.056</td><td data-metric="fde">0.074</td><td data-metric="ahe">0.032</td><td data-metric="fhe">0.049</td><td data-metric="nc">0.952</td><td data-metric="wac">0.961</td><td data-metric="ttc">0.882</td><td data-metric="cl">0.825</td><td data-metric="ep">0.915</td><td data-metric="ic">0.842</td><td data-metric="qns">0.789</td></tr>
+<tr data-model="π₀.₅"><th scope="row">π₀.₅</th><td data-metric="ade">0.036</td><td data-metric="fde">0.075</td><td data-metric="ahe">0.032</td><td data-metric="fhe">0.052</td><td data-metric="nc">0.961</td><td data-metric="wac">0.969</td><td data-metric="ttc">0.899</td><td data-metric="cl">0.834</td><td data-metric="ep">0.922</td><td data-metric="ic">0.874</td><td data-metric="qns">0.819</td></tr>
+<tr data-model="OpenVLA"><th scope="row">OpenVLA</th><td data-metric="ade">0.041</td><td data-metric="fde">0.068</td><td data-metric="ahe">0.030</td><td data-metric="fhe">0.051</td><td data-metric="nc">0.956</td><td data-metric="wac">0.964</td><td data-metric="ttc">0.888</td><td data-metric="cl">0.823</td><td data-metric="ep">0.928</td><td data-metric="ic">0.855</td><td data-metric="qns">0.802</td></tr>
+<tr data-model="DR-VLA w/o web"><th scope="row">DR-VLA w/o web</th><td data-metric="ade">0.034</td><td data-metric="fde">0.062</td><td data-metric="ahe">0.030</td><td data-metric="fhe">0.052</td><td data-metric="nc">0.960</td><td data-metric="wac">0.970</td><td data-metric="ttc">0.905</td><td data-metric="cl">0.832</td><td data-metric="ep">0.924</td><td data-metric="ic">0.878</td><td data-metric="qns">0.823</td></tr>
+<tr class="highlight" data-model="DR-VLA"><th scope="row">DR-VLA</th><td data-metric="ade">0.027</td><td data-metric="fde">0.052</td><td data-metric="ahe">0.024</td><td data-metric="fhe">0.041</td><td data-metric="nc">0.982</td><td data-metric="wac">0.979</td><td data-metric="ttc">0.928</td><td data-metric="cl">0.842</td><td data-metric="ep">0.945</td><td data-metric="ic">0.921</td><td data-metric="qns">0.884</td></tr></tbody></table></div><p class="chart-note">ADE/FDE: average/final displacement error; AHE/FHE: average/final heading error; NC: no collision; WAC: walkable-area compliance; TTC: time-to-collision; CL: clearance; EP: ego progress; IC: instruction compliance. The “w/o web” variant uses EgoLynx-Robot only.</p></details>
+      </div>
+    </section>
+    <section class="research-section section-tint" id="qualitative" aria-labelledby="qualitative-title">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">05 / Qualitative results</p><h2 id="qualitative-title">Human priors meet robot grounding.</h2><p>Predicted trajectories on replayed observations from four unseen scenes, comparing web-only, robot-only, and jointly trained variants.</p></div>
+        <figure class="paper-figure">
+          <button class="figure-button" type="button" data-zoom="assets/ablation-dataset.png" data-caption="Figure 3: predictions on replayed observations. Rows compare web-only, robot-only, and jointly trained variants across four scenes." aria-label="Enlarge trajectory comparison figure"><img src="assets/ablation-dataset.png" width="2400" height="1351" loading="lazy" alt="Three rows of predicted trajectories in four fisheye scenes, trained on web data only, robot data only, and both sources."><span class="zoom-hint">View full figure <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></svg></span></button>
+          <figcaption>Figure 3 · Top: EgoLynx-Web only. Middle: EgoLynx-Robot only. Bottom: both data sources. These are replay-based trajectory predictions.</figcaption>
+        </figure>
+        <div class="comparison-notes">
+          <div><h3>Web-only</h3><p>Steers around obstacles in these examples, but remains poorly calibrated to the robot’s metric scale. This ablation uses DPVO pseudo-trajectory supervision.</p></div>
+          <div><h3>Robot-only</h3><p>Predicts more suitably scaled motion, but follows socially compliant routes less consistently in the shown scenes.</p></div>
+          <div><h3>Joint training</h3><p>Combines human navigation priors with robot grounding. In the third scene, the predicted path avoids an obstacle and returns to the sidewalk.</p></div>
+        </div>
+        <p class="scope-note"><b>Evaluation scope.</b> The manuscript reports open-loop and pseudo-closed-loop evaluation with real-robot replay. Large-scale closed-loop deployment remains future work, and transfer still requires adaptation on robot data.</p>
+      </div>
+    </section>
+    <section class="research-section" id="citation" aria-labelledby="citation-title">
+      <div class="container">
+        <div class="citation-top"><div class="section-heading"><p class="eyebrow">Reference</p><h2 id="citation-title">Citation</h2></div><button class="copy-button" id="copy-citation" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4"/></svg><span>Copy BibTeX</span></button></div>
+        <pre><code id="bibtex">@misc{tian_dr_vla,
+  title  = {DR-VLA: Learning Human-Like Quadruped Navigation
+            from Egocentric Web Videos via
+            Domain-Invariant Scene Representations},
+  author = {Tian, Jun and Chen, Ruo and Lin, Hongyi
+            and Niu, Yingjie and Li, Chao},
+  note   = {Manuscript}
+}</code></pre>
+        <p class="citation-note">Preliminary manuscript citation. Publication metadata will be updated when the preprint is available.</p>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer container"><a class="footer-brand" href="#top" aria-label="DEEP Robotics · DR-VLA"><img src="assets/deep-robotics.svg" alt="DEEP Robotics" width="160" height="23"></a><p><strong>DR-VLA</strong> · Learning transferable navigation through scene structure.</p><a href="#top">Back to top</a></footer>
+  <div class="live-status" role="status" aria-live="polite"></div>
+  <dialog class="figure-dialog" aria-labelledby="figure-dialog-caption"><button class="dialog-close" type="button" aria-label="Close enlarged figure">×</button><img alt="" width="2400" height="1351"><p id="figure-dialog-caption"></p></dialog>
+</body>
+</html>

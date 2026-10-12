@@ -1,0 +1,9 @@
+Source: /mnt/nas_brain/shared/data/WM_data/results/cosmos3/generated
+Selection: lexical episodes 2 through 6; original first episode removed
+Transition: 0.5-second crossfade
+
+1. d-01dc6666d6a54b8fab07777865e6ad45__episode_000012/vision.mp4 | duration=29.70s | clip=12.35s-17.35s
+2. d-065fac1a545b42ec8b4e876ddc0b5ca1__episode_000007/vision.mp4 | duration=29.70s | clip=12.35s-17.35s
+3. d-065fac1a545b42ec8b4e876ddc0b5ca1__episode_000022/vision.mp4 | duration=28.90s | clip=11.95s-16.95s
+4. d-065fac1a545b42ec8b4e876ddc0b5ca1__episode_000029/vision.mp4 | duration=28.90s | clip=11.95s-16.95s
+5. d-065fac1a545b42ec8b4e876ddc0b5ca1__episode_000035/vision.mp4 | duration=28.90s | clip=11.95s-16.95s
